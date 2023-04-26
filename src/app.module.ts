@@ -5,14 +5,16 @@ import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
 import { UsersModule } from './users/users.module';
+import { jwtConfig } from './@core/config/jwt.config';
 import { databaseConfig } from './@core/config/config';
 import { typeormFactory } from './@core/config/database.config';
+import { DeviceSessionsModule } from './device-sessions/device-sessions.module';
 
 @Module({
   imports: [
     AuthModule,
     ConfigModule.forRoot({
-      load: [databaseConfig],
+      load: [databaseConfig, jwtConfig],
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
@@ -20,6 +22,7 @@ import { typeormFactory } from './@core/config/database.config';
       inject: [ConfigService],
     }),
     UsersModule,
+    DeviceSessionsModule,
   ],
   controllers: [AppController],
 })
