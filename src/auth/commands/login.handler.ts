@@ -12,7 +12,6 @@ import {
 } from 'src/device-sessions/types';
 import { TokensService } from 'src/@core/services/tokens.service';
 import { CreateOrUpdateDeviceSessionCommand } from 'src/device-sessions/commands/create-or-update-device-session.handler';
-import { TokenPayload } from 'src/@core/types';
 
 export class LoginCommand {
   public constructor(
@@ -61,7 +60,6 @@ export class LoginCommadHandler implements ICommandHandler<LoginCommand> {
       sub: userId,
     };
 
-    console.log(deviceId, 'deviceId');
     const updatedOrCreatedDeviceId = await this.commandBus.execute<
       CreateOrUpdateDeviceSessionCommand,
       string
