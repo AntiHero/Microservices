@@ -9,6 +9,7 @@ import { jwtConfig } from './@core/config/jwt.config';
 import { databaseConfig } from './@core/config/config';
 import { typeormFactory } from './@core/config/database.config';
 import { DeviceSessionsModule } from './device-sessions/device-sessions.module';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { DeviceSessionsModule } from './device-sessions/device-sessions.module';
     }),
     UsersModule,
     DeviceSessionsModule,
+    ChatModule,
   ],
   controllers: [AppController],
 })
