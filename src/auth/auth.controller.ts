@@ -62,7 +62,7 @@ export class AuthController {
         password,
         deviceId: activeDeviceSessionId,
         userAgent,
-      }),
+      })
     );
 
     response.cookie(REFRESH_TOKEN, refreshToken, this.cookieOptions);
